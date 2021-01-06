@@ -5,7 +5,7 @@ public class Node {
     private Node next, prev;
 
     public Node(String value) {
-
+        data = value;
     }
 
     public void setData(String value) {
