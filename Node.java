@@ -9,26 +9,26 @@ public class Node {
     }
 
     public void setData(String value) {
-
+        data = value;
     }
 
     public String getData() {
-
+        return data;
     }
 
     public void setNext(Node node) {
-
+        next = node;
     }
 
     public Node getNext() {
-
+        return next;
     }
 
     public void setPrev(Node node) {
-
+        prev = node;
     }
 
     public Node getPrev() {
-
+        return prev;
     }
 }
