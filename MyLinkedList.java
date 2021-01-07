@@ -23,23 +23,45 @@ public class MyLinkedList {
         return true;
     }
 
+    private Node getNode(int index) {
+        if (index < 0 || index >= size) {
+            // throw exception
+            return null;
+        }
+
+        Node current = start;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current;
+    }
+
     public void add(int index, String value) {
         if (index == size) {
             add(value);
             return;
         }
 
+        size++;
         Node node = new Node(value);
         if (index == 0) {
             start.setPrev(node);
             node.setNext(start);
 
             start = node;
+            return;
         }
+
+        Node current = getNode(index);
+        Node behind = current.getPrev();
+        behind.setNext(node);
+        current.setPrev(node);
+        node.setNext(current);
+        node.setPrev(behind);
     }
     
     public String get(int index) {
-        return null;
+        return getNode(index).getData();
     }
 
     public String set(int index, String value) {
@@ -49,7 +71,7 @@ public class MyLinkedList {
     public String toString() {
         return null;
     }
-    
+
     public String toStringRev() {
         return null;
     }
