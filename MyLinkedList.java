@@ -25,8 +25,7 @@ public class MyLinkedList {
 
     private Node getNode(int index) {
         if (index < 0 || index >= size) {
-            // throw exception
-            return null;
+            throw new IndexOutOfBoundsException("Index " + index + "is out of bounds, use an index from 0-" + size() + " uninclusive");
         }
 
         Node current = start;
