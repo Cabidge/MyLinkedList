@@ -28,9 +28,18 @@ public class MyLinkedList {
             throw new IndexOutOfBoundsException("Index " + index + "is out of bounds, use an index from 0-" + size() + " non-inclusive");
         }
 
-        Node current = start;
-        for (int i = 0; i < index; i++) {
-            current = current.getNext();
+        Node current;
+        
+        if (index < size / 2) {
+            current = start;
+            for (int i = 0; i < index; i++) {
+                current = current.getNext();
+            }
+        } else {
+            current = end;
+            for (int i = size - 1; i > index; i--) {
+                current = current.getPrev();
+            }
         }
         return current;
     }
@@ -41,9 +50,9 @@ public class MyLinkedList {
             return;
         }
 
-        size++;
         Node node = new Node(value);
         if (index == 0) {
+            size++;
             start.setPrev(node);
             node.setNext(start);
 
@@ -53,6 +62,8 @@ public class MyLinkedList {
 
         Node current = getNode(index);
         Node behind = current.getPrev();
+        size++; // update size AFTER getting "current" to not mess with the backwards traversal
+
         behind.setNext(node);
         current.setPrev(node);
         node.setNext(current);
