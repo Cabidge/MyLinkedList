@@ -24,7 +24,18 @@ public class MyLinkedList {
     }
 
     public void add(int index, String value) {
-        
+        if (index == size) {
+            add(value);
+            return;
+        }
+
+        Node node = new Node(value);
+        if (index == 0) {
+            start.setPrev(node);
+            node.setNext(start);
+
+            start = node;
+        }
     }
     
     public String get(int index) {
@@ -36,6 +47,10 @@ public class MyLinkedList {
     }
 
     public String toString() {
+        return null;
+    }
+    
+    public String toStringRev() {
         return null;
     }
 }
