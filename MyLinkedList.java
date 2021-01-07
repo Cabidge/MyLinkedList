@@ -14,6 +14,7 @@ public class MyLinkedList {
             start = node;
         } else {
             end.setNext(node);
+            node.setPrev(end);
         }
         end = node;
 
