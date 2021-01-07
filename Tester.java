@@ -15,9 +15,22 @@ public class Tester {
             node1.setNext(node2);
             Tester.printAssert(node1.getPrev().getData().equals("prev"), 'A', "Node prev");
             Tester.printAssert(node1.getNext().getData().equals("next"), 'A', "Node next");
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             System.out.println("An exception ocurred!");
             Tester.printBad('A');
+        }
+
+        Tester.printSection("B - LinkedList constructor, add(value), and size()");
+        try {
+            MyLinkedList list = new MyLinkedList();
+            Tester.printAssert(list.size() == 0, 'B', "LinkedList size() starts at 0");
+
+            list.add("A");
+            list.add("B");
+            Tester.printAssert(list.size() == 2, 'B', "LinkedList add(value) increases the size()");
+        } catch (RuntimeException e) {
+            System.out.println("An exception ocurred!");
+            Tester.printBad('B');
         }
     }
     
