@@ -12,8 +12,8 @@ public class MyLinkedList {
         return false;
     }
 
-    public boolean add(int index, String value) {
-        return false;
+    public void add(int index, String value) {
+        
     }
     
     public String get(int index) {
