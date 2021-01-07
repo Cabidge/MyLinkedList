@@ -50,9 +50,25 @@ public class Tester {
 
             list.add(4, "middle");
             Tester.printAssert("middle".equals(list.get(4)), 'C', "LinkedList add(index, value) inserts in the middle correctly");
-            
+
             list.add(list.size(), "end");
             Tester.printAssert("end".equals(list.get(list.size() - 1)), 'C', "LinkedList add(index, value) appends to end correctly");
+
+            try {
+                list.get(-2);
+                System.out.println("Error: No exception thrown!");
+                Tester.printBad('C');
+            } catch (IndexOutOfBoundsException e) {
+                Tester.printGood("get() IOOBException caught!");
+            }
+
+            try {
+                list.get(10);
+                System.out.println("Error: No exception thrown!");
+                Tester.printBad('C');
+            } catch (IndexOutOfBoundsException e) {
+                Tester.printGood("get() IOOBException caught!");
+            }
         } catch (RuntimeException e) {
             System.out.println("An exception ocurred!");
             Tester.printBad('C');
@@ -69,6 +85,22 @@ public class Tester {
             Tester.printAssert(list.size() == 100, 'D', "LinkedList set(index, value) doesn't change size");
             Tester.printAssert("7".equals(x), 'D', "LinkedList set(index, value) returns value");
             Tester.printAssert("Yay".equals(list.get(7)), 'D', "LinkedList set(index, value) sets value");
+
+            try {
+                list.set(-2, null);
+                System.out.println("Error: No exception thrown!");
+                Tester.printBad('D');
+            } catch (IndexOutOfBoundsException e) {
+                Tester.printGood("set() IOOBException caught!");
+            }
+
+            try {
+                list.set(108, null);
+                System.out.println("Error: No exception thrown!");
+                Tester.printBad('D');
+            } catch (IndexOutOfBoundsException e) {
+                Tester.printGood("set() IOOBException caught!");
+            }
         } catch (RuntimeException e) {
             System.out.println("An exception ocurred!");
             Tester.printBad('D');
