@@ -9,7 +9,17 @@ public class MyLinkedList {
     }
 
     public boolean add(String value) {
-        return false;
+        Node node = new Node(value);
+        if (size == 0) {
+            start = node;
+        } else {
+            end.setNext(node);
+        }
+        end = node;
+
+        size++;
+
+        return true;
     }
 
     public void add(int index, String value) {
