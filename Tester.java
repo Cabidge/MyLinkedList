@@ -32,6 +32,63 @@ public class Tester {
             System.out.println("An exception ocurred!");
             Tester.printBad('B');
         }
+    
+        Tester.printSection("C - LinkedList add(index, value) and get(index)");
+        try {
+            MyLinkedList list = new MyLinkedList();
+            list.add("x");
+            list.add("y");
+            list.add("z");
+            Tester.printAssert("y".equals(list.get(1)), 'C', "LinkedList get(index)");
+
+            for (int i = 0; i < 5; i++) {
+                list.add(0, "front");
+            }
+            Tester.printAssert(list.size() == 8, 'C', "LinkedList add(index, value) increases the size()");
+            Tester.printAssert("front".equals(list.get(0)), 'C', "LinkedList add(index, value) appends to front correctly");
+            Tester.printAssert("front".equals(list.get(5)), 'C', "LinkedList add(index, value) appends to front correctly");
+
+            list.add(4, "middle");
+            Tester.printAssert("middle".equals(list.get(4)), 'C', "LinkedList add(index, value) inserts in the middle correctly");
+            
+            list.add(list.size(), "end");
+            Tester.printAssert("end".equals(list.get(list.size() - 1)), 'C', "LinkedList add(index, value) appends to end correctly");
+        } catch (RuntimeException e) {
+            System.out.println("An exception ocurred!");
+            Tester.printBad('C');
+        }
+
+        Tester.printSection("D - LinkedList set(index, value)");
+        try {
+            MyLinkedList list = new MyLinkedList();
+            for (int i = 0; i < 100; i++) {
+                list.add(Integer.toString(i));
+            }
+
+            String x = list.set(7, "Yay");
+            Tester.printAssert(list.size() == 100, 'D', "LinkedList set(index, value) doesn't change size");
+            Tester.printAssert("7".equals(x), 'D', "LinkedList set(index, value) returns value");
+            Tester.printAssert("Yay".equals(list.get(7)), 'D', "LinkedList set(index, value) sets value");
+        } catch (RuntimeException e) {
+            System.out.println("An exception ocurred!");
+            Tester.printBad('D');
+        }
+        
+        Tester.printSection("E - LinkedList toString()");
+        try {
+            MyLinkedList list = new MyLinkedList();
+            list.add("a");
+            list.add("b");
+            list.add("c");
+            
+            String s = list.toString();
+            String rev = list.toStringRev();
+            Tester.printAssert("[a, b, c]".equals(s), 'E', "LinkedList toString() works correctly");
+            Tester.printAssert("[c, b, a]".equals(rev), 'E', "LinkedList toString() reversed works correctly");
+        } catch (RuntimeException e) {
+            System.out.println("An exception ocurred!");
+            Tester.printBad('E');
+        }
     }
     
     public static void printAssert(boolean assertion, char section, String comment) {
