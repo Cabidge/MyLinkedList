@@ -46,7 +46,7 @@ public class Tester {
             }
             Tester.printAssert(list.size() == 8, 'C', "LinkedList add(index, value) increases the size()");
             Tester.printAssert("front".equals(list.get(0)), 'C', "LinkedList add(index, value) appends to front correctly");
-            Tester.printAssert("front".equals(list.get(5)), 'C', "LinkedList add(index, value) appends to front correctly");
+            Tester.printAssert("x".equals(list.get(5)), 'C', "LinkedList add(index, value) appends to front correctly");
 
             list.add(4, "middle");
             Tester.printAssert("middle".equals(list.get(4)), 'C', "LinkedList add(index, value) inserts in the middle correctly");
