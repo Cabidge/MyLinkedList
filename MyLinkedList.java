@@ -1,13 +1,11 @@
 public class MyLinkedList {
-    private int size;
+    private int size = 0;
     private Node start, end;
 
-    public MyLinkedList() {
-
-    }
+    public MyLinkedList() { } // no need to do anything
 
     public int size() {
-        return -1;
+        return size;
     }
 
     public boolean add(String value) {
