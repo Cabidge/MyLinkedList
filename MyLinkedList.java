@@ -110,4 +110,12 @@ public class MyLinkedList {
         s += "]";
         return s;
     }
+
+    public String remove(int index) {
+        return null;
+    }
+
+    public void extend(MyLinkedList other) {
+        
+    }
 }
