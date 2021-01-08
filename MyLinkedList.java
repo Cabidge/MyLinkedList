@@ -112,10 +112,36 @@ public class MyLinkedList {
     }
 
     public String remove(int index) {
-        return null;
+        Node current = getNode(index);
+        String out = current.getData();
+
+        Node prev = current.getPrev();
+        Node next = current.getNext();
+
+        // if there is no prev, this must be the head
+        if (prev == null) {
+            start = next; // make the next node the new start
+        } else {
+            prev.setNext(next); // otherwise, the prev should point to the next
+        }
+        // if there is not next, this must be the tail
+        if (next == null) {
+            end = prev; // make the prev node the new end
+        } else {
+            next.setPrev(prev); // otherwise, the next should point to the prev
+        }
+
+        // if the start is null, end must also be null
+        // if they aren't null, set their 'outer pointers' to null
+        if (start != null) {
+            start.setPrev(null);
+            end.setNext(null);
+        }
+        size--;
+        return out;
     }
 
     public void extend(MyLinkedList other) {
-        
+
     }
 }
