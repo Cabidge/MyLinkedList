@@ -150,6 +150,21 @@ public class Tester {
             } catch (IndexOutOfBoundsException e) {
                 Tester.printGood("remove() IOOBException caught!");
             }
+
+            Tester.printAssert("0".equals(list.remove(0)), 'F', "LinkedList remove() head");
+            Tester.printAssert(list.size() == 8, 'F', "LinkedList remove() decreases size");
+
+            Tester.printAssert("9".equals(list.remove(list.size() - 1)), 'F', "LinkedList remove() tail");
+            Tester.printAssert(list.size() == 7, 'F', "LinkedList remove() decreases size");
+            Tester.printAssert("[1, 2, 3, 5, 6, 7, 8]".equals(list.toString()), 'G', "remove() + toString()");
+            Tester.printAssert("[8, 7, 6, 5, 3, 2, 1]".equals(list.toStringReversed()), 'G', "remove() + toStringReversed()");
+
+            while (list.size() > 0) {
+                list.remove(0);
+            }
+            Tester.printAssert(list.size() == 0, 'F', "LinkedList remove() till empty");
+            Tester.printAssert("[]".equals(list.toString()), 'G', "remove() + toString()");
+            Tester.printAssert("[]".equals(list.toStringReversed()), 'G', "remove() + toStringReversed()");
         } catch (RuntimeException e) {
             System.out.println("An exception ocurred!");
             Tester.printBad('F');
