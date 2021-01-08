@@ -142,6 +142,15 @@ public class MyLinkedList {
     }
 
     public void extend(MyLinkedList other) {
+        if (size == 0) {
+            start = other.start;
+        } else {
+            end.setNext(other.start);
+            other.start.setPrev(end);
+        }
+
+        end = other.end;
+        size += other.size;
 
         // obliterate the other list
         other.start = null;
