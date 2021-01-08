@@ -96,7 +96,7 @@ public class MyLinkedList {
         return s;
     }
 
-    public String toStringRev() {
+    public String toStringReversed() {
         if (size == 0) {
             return "[]";
         }

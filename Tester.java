@@ -7,7 +7,7 @@ public class Tester {
 
             node1.setData("abcD");
             Tester.printAssert(node1.getData().equals("abcD"), 'A', "Node setData()");
-            
+
             Node node0 = new Node("prev");
             Node node2 = new Node("next");
 
@@ -32,7 +32,7 @@ public class Tester {
             System.out.println("An exception ocurred!");
             Tester.printBad('B');
         }
-    
+
         Tester.printSection("C - LinkedList add(index, value) and get(index)");
         try {
             MyLinkedList list = new MyLinkedList();
@@ -45,14 +45,17 @@ public class Tester {
                 list.add(0, "front");
             }
             Tester.printAssert(list.size() == 8, 'C', "LinkedList add(index, value) increases the size()");
-            Tester.printAssert("front".equals(list.get(0)), 'C', "LinkedList add(index, value) appends to front correctly");
+            Tester.printAssert("front".equals(list.get(0)), 'C',
+                    "LinkedList add(index, value) appends to front correctly");
             Tester.printAssert("x".equals(list.get(5)), 'C', "LinkedList add(index, value) appends to front correctly");
 
             list.add(4, "middle");
-            Tester.printAssert("middle".equals(list.get(4)), 'C', "LinkedList add(index, value) inserts in the middle correctly");
+            Tester.printAssert("middle".equals(list.get(4)), 'C',
+                    "LinkedList add(index, value) inserts in the middle correctly");
 
             list.add(list.size(), "end");
-            Tester.printAssert("end".equals(list.get(list.size() - 1)), 'C', "LinkedList add(index, value) appends to end correctly");
+            Tester.printAssert("end".equals(list.get(list.size() - 1)), 'C',
+                    "LinkedList add(index, value) appends to end correctly");
 
             try {
                 list.get(-2);
@@ -105,16 +108,16 @@ public class Tester {
             System.out.println("An exception ocurred!");
             Tester.printBad('D');
         }
-        
+
         Tester.printSection("E - LinkedList toString()");
         try {
             MyLinkedList list = new MyLinkedList();
             list.add("a");
             list.add("b");
             list.add("c");
-            
+
             String s = list.toString();
-            String rev = list.toStringRev();
+            String rev = list.toStringReversed();
             Tester.printAssert("[a, b, c]".equals(s), 'E', "LinkedList toString() works correctly");
             Tester.printAssert("[c, b, a]".equals(rev), 'E', "LinkedList toString() reversed works correctly");
         } catch (RuntimeException e) {
@@ -122,7 +125,7 @@ public class Tester {
             Tester.printBad('E');
         }
     }
-    
+
     public static void printAssert(boolean assertion, char section, String comment) {
         if (assertion) {
             printGood(comment);
