@@ -143,5 +143,9 @@ public class MyLinkedList {
 
     public void extend(MyLinkedList other) {
 
+        // obliterate the other list
+        other.start = null;
+        other.end = null;
+        other.size = 0;
     }
 }
