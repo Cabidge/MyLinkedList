@@ -124,6 +124,66 @@ public class Tester {
             System.out.println("An exception ocurred!");
             Tester.printBad('E');
         }
+
+        Tester.printSection("F - LinkedList remove()");
+        try {
+            MyLinkedList list = new MyLinkedList();
+
+            try {
+                list.remove(0);
+                System.out.println("Error: No exception thrown!");
+                Tester.printBad('F');
+            } catch (IndexOutOfBoundsException e) {
+                Tester.printGood("remove() IOOBException caught!");
+            }
+
+            for (int i = 0; i < 10; i++) {
+                list.add("" + i);
+            }
+            Tester.printAssert("4".equals(list.remove(4)), 'F', "LinkedList remove() returns value");
+            Tester.printAssert(list.size() == 9, 'F', "LinkedList remove() decreases size");
+
+            try {
+                list.remove(-1);
+                System.out.println("Error: No exception thrown!");
+                Tester.printBad('F');
+            } catch (IndexOutOfBoundsException e) {
+                Tester.printGood("remove() IOOBException caught!");
+            }
+        } catch (RuntimeException e) {
+            System.out.println("An exception ocurred!");
+            Tester.printBad('F');
+        }
+
+        Tester.printSection("G - LinkedList extend()");
+        try {
+            MyLinkedList a = new MyLinkedList();
+            MyLinkedList b = new MyLinkedList();
+
+            a.add("a");
+            a.add("b");
+            a.add("c");
+            b.add("D");
+            b.add("E");
+            b.add("F");
+
+            a.extend(b);
+            Tester.printAssert(a.size() == 6, 'G', "extend() changes size");
+            Tester.printAssert(b.size() == 0, 'G', "extend() changes size");
+
+            Tester.printAssert("[a, b, c, D, E, F]".equals(a.toString()), 'G', "extend() + toString()");
+            Tester.printAssert("[F, E, D, c, b, a]".equals(a.toStringReversed()), 'G', "extend() + toStringReversed()");
+            Tester.printAssert("[]".equals(b.toString()), 'G', "extend() + toString()");
+            Tester.printAssert("[]".equals(b.toStringReversed()), 'G', "extend() + toStringReversed()");
+
+            // dump into empty list test
+            b.extend(a);
+            Tester.printAssert("[a, b, c, D, E, F]".equals(b.toString()), 'G', "extend() + toString()");
+            Tester.printAssert("[F, E, D, c, b, a]".equals(b.toStringReversed()), 'G', "extend() + toStringReversed()");
+        } catch (RuntimeException e) {
+            System.out.println("An exception ocurred!");
+            Tester.printBad('F');
+        }
     }
 
     public static void printAssert(boolean assertion, char section, String comment) {
