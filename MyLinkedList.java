@@ -142,6 +142,10 @@ public class MyLinkedList {
     }
 
     public void extend(MyLinkedList other) {
+        if (other == null || other.size == 0) {
+            return;
+        }
+
         if (size == 0) {
             start = other.start;
         } else {
